@@ -1,7 +1,23 @@
 # Tools
 Scripts curtos, e úteis.
 
-[Listar_Arquivos.py](https://github.com/LucasDonato333/Tools/blob/master/Listar_Arquivos.py)
+<details>
+  <summary> Listar Arquivos </summary>
+
+Procura no diretorio todos os arquivos, copia os nomes e armazena em um documento chamado "Lista_Nome_Arquivos.txt"
+
+```python
+import glob
+listar_arquivo = glob.glob('*.*')# PROCURA NO DIRETORIO TODOS ARQUIVOS.
+with open("Lista_Nome_Arquivos.txt","w") as f:
+    for linha in listar_arquivo:
+        f.write(linha+"\n")
+```
+
+  Para instalar o módulo digite
+  ```  $ pip install glob2  ```
+  
+</details>
 
 <details>
   <summary>Envio de E-mail(smtplib)</summary>

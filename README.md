@@ -2,7 +2,7 @@
 Scripts curtos, e úteis.
 
 <details>
-  <summary> Listar Arquivos </summary>
+  <summary> Listar Arquivos </summary><br>
 
 O código "lista" todos arquivos disponiveis em uma pasta(de sua preferencia).<br>
 
@@ -21,13 +21,13 @@ with open("Lista_Nome_Arquivos.txt","w") as f:
         f.write(linha+"\n")
 ```
 
-  Para instalar o módulo digite
+  Para instalar o módulo digite:<br>
   ```  $ pip install glob2  ```
   
 </details>
 
 <details>
-  <summary>Envio de E-mail(smtplib)</summary>
+  <summary>Envio de E-mail (smtplib)</summary><br>
   
   Envia e-mail via Python.<br>
 
@@ -55,7 +55,7 @@ except smtplib.SMTPServerDisconnected:
     server.login(endmail,pswd)     
 ```
 
-  Para instalar o módulo digite
+  Para instalar o módulo digite:<br>
   ```  $ pip install smtp   ```
 
 </details>

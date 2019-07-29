@@ -67,6 +67,7 @@ except smtplib.SMTPServerDisconnected:
 Esse código "simula" um letreiro de led.
 
 ![]{Codigo_Python/Letreiro/letreiro.gif}
+
 ```python
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-

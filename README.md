@@ -2,7 +2,7 @@
 Scripts curtos, e úteis.
 
 <details>
-  <summary> Listar Arquivos </summary><br>
+  <summary> LISTAR ARQUIVOS </summary><br>
 
 O código lista todos arquivos disponiveis em uma pasta(de sua preferencia).<br>
 
@@ -27,7 +27,7 @@ with open("Lista_Nome_Arquivos.txt","w") as f:
 </details>
 
 <details>
-  <summary>Envio de E-mail (smtplib)</summary><br>
+  <summary> ENVIAR E-MAIL (smtplib)</summary><br>
   
   Envia e-mail via Python.<br>
 
@@ -60,10 +60,9 @@ except smtplib.SMTPServerDisconnected:
 
 </details>
 <details>
-  <summary>Brincando com Strings</summary><br>
+  <summary> BRICANDO COM STRINGS</summary><br>
   <details>
-    <summary>- Letreiro</summary><br>
-
+<summary>    Letreiro de LED</summary><br>
 Esse código "simula" um letreiro de led.
 
 ![](Codigo_Python/Letreiro/letreiro.gif)

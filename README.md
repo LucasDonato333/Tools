@@ -4,7 +4,9 @@ Scripts curtos, e úteis.
 <details>
   <summary> Listar Arquivos </summary>
 
-Armazena em um arquivo de texto o nome de todos os arquivos presentes na pasta.
+O código "lista" todos arquivos disponiveis em uma pasta(de sua preferencia).<br>
+
+O script le o nome dos arquivos presentes, e usando with open, armazena toda informação em um arquivo de texto.<br>
 
 ```python
 import glob # Módulo glob

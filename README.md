@@ -4,11 +4,16 @@ Scripts curtos, e úteis.
 <details>
   <summary> Listar Arquivos </summary>
 
-Procura no diretorio todos os arquivos, copia os nomes e armazena em um documento chamado "Lista_Nome_Arquivos.txt"
+Armazena em um arquivo de texto o nome de todos os arquivos presentes na pasta.
 
 ```python
-import glob
-listar_arquivo = glob.glob('*.*')# PROCURA NO DIRETORIO TODOS ARQUIVOS.
+import glob # Módulo glob
+
+# PROCURA NO DIRETORIO TODOS ARQUIVOS.
+listar_arquivo = glob.glob('*.*') # No trecho " glob.glob('*.*') " Existem dois asteriscos:
+    # 1º Nome do Arquivo
+    # 2° Nome da Extensão
+
 with open("Lista_Nome_Arquivos.txt","w") as f:
     for linha in listar_arquivo:
         f.write(linha+"\n")

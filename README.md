@@ -94,7 +94,7 @@ while fim < len(texto): # Enquanto o "fim" for menor que o tamanho total do text
 
 <details>
   <summary> CREATE FAKE</summary><br>
-###Esse programa tem como objetivo realizar a criação de dados falsos, a partir dos dados de criação de uma tabela.
+### Esse programa tem como objetivo realizar a criação de dados falsos, a partir dos dados de criação de uma tabela.
 
 Para utilizar o programa você deverá ter um arquivo contendo informações sobre a tabela.
 
@@ -115,7 +115,7 @@ Deverá conter o nome do campo, um espaço entre o nome do campo e o tipo do cam
 Dessa forma o programa poderá ler e criar dados aleatórios, sendo preciso apenas indicar o caminho do arquivo de leitura e a quantidade de linhas que deseja formar os dados. Assim você poderá testar qualquer tabela com dados inseridos, sem precisar criar os famosos "teste01", "teste". 
 
 
-´´´python
+```python
 from random import uniform
 import random
 from random import randint
@@ -126,7 +126,7 @@ from time import gmtime, strftime
 lista_tipos = []
 lista_numero = []
 
-# REALIZA A LEITURA DO ARQUIVO
+#REALIZA A LEITURA DO ARQUIVO
 def leitura_dados():
     with open(arquivo,"r") as file:
         for f in file:
@@ -148,7 +148,7 @@ def leitura_dados():
             lista_numero.append(data_qt)
     grava_insert()        
 
-# FAZ A GRAVAÇÃO DOS DADOS FAKES PARA UM ARQUIVO    
+#FAZ A GRAVAÇÃO DOS DADOS FAKES PARA UM ARQUIVO    
 def grava_insert():
     lista_de_dados = []
     for indice in range(0,num_max):    
@@ -170,7 +170,7 @@ def grava_insert():
                     file_write.write(",")
             file_write.write("\n")
 
-# TIPOS DE DADOS
+#TIPOS DE DADOS
 def VARCHAR(data_qt):
     lista_de_letras = string.ascii_lowercase
     nome = []
@@ -191,12 +191,11 @@ def DATE():
     data = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     return("'{}'".format(data))
 
-# _____________________________________________________#
+#_____________________________________________________#
 arquivo = str(input("Digite o caminho do arquivo: "))
 num_max = int(input())
 leitura_dados()
-
-´´´
+```
 
 </details>
 	  

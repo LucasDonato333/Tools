@@ -89,3 +89,120 @@ while fim < len(texto): # Enquanto o "fim" for menor que o tamanho total do text
   ```
   </details>
 </details>
+
+
+
+<details>
+  <summary> CREATE FAKE</summary><br>
+###Esse programa tem como objetivo realizar a criação de dados falsos, a partir dos dados de criação de uma tabela.
+
+Para utilizar o programa você deverá ter um arquivo contendo informações sobre a tabela.
+
+As informações deverão estar da seguinte maneira:
+```
+Nome_da_Coluna Tipo_do_Campo(Quantidade),
+Nome_da_Coluna2 Tipo_do_Campo2.
+```
+
+```
+id_num INTEGER,
+nm VARCHAR(20),
+bl_id DECIMAL(20,4)
+```
+
+Deverá conter o nome do campo, um espaço entre o nome do campo e o tipo do campo, e caso precise o tamanho do campo. Para finalizar uma virgula no final.
+
+Dessa forma o programa poderá ler e criar dados aleatórios, sendo preciso apenas indicar o caminho do arquivo de leitura e a quantidade de linhas que deseja formar os dados. Assim você poderá testar qualquer tabela com dados inseridos, sem precisar criar os famosos "teste01", "teste". 
+
+
+´´´python
+from random import uniform
+import random
+from random import randint
+from random import choice
+import string
+from time import gmtime, strftime
+
+lista_tipos = []
+lista_numero = []
+
+# REALIZA A LEITURA DO ARQUIVO
+def leitura_dados():
+    with open(arquivo,"r") as file:
+        for f in file:
+            f = f.split(" ")
+            nm_coluna = f[0]
+            nm_tipo = f[1]
+            try:
+                nm_tipo = f[1].split("(")
+                data_type = str(nm_tipo[0])
+                data_qt = str(nm_tipo[1]).replace(")","")
+            except:
+                data_qt = 0
+                pass
+            lista_tipos.append((data_type.lower()).replace(",\n",""))
+            try:
+                data_qt = int(data_qt.replace(",\n",""))
+            except:
+                pass
+            lista_numero.append(data_qt)
+    grava_insert()        
+
+# FAZ A GRAVAÇÃO DOS DADOS FAKES PARA UM ARQUIVO    
+def grava_insert():
+    lista_de_dados = []
+    for indice in range(0,num_max):    
+        with open("INSERT.parquet","a") as file_write:
+            for c in range(len(lista_tipos)):
+                #print(f"Tipo: {lista_tipos[c]} QT: {lista_numero[c]}")
+                if lista_tipos[c] in "decimal":
+                    dados = DECIMAL(lista_numero[c])
+                elif lista_tipos[c] in "varchar":
+                    dados = VARCHAR(lista_numero[c])
+                elif lista_tipos[c] in "integer":
+                    dados = INTEGER()
+                elif lista_tipos[c] in "date":
+                    dados = DATE()
+                else:
+                    print("ELSE")
+                file_write.write(str(dados))
+                if c+1 != len(lista_tipos):
+                    file_write.write(",")
+            file_write.write("\n")
+
+# TIPOS DE DADOS
+def VARCHAR(data_qt):
+    lista_de_letras = string.ascii_lowercase
+    nome = []
+    letters = string.ascii_lowercase
+    nome =  (''.join(choice(letters) for i in range(0,int(data_qt))))
+    return("'{}'".format(nome[0].upper()+nome[1:]))
+
+
+def DECIMAL(data_qt):
+    return(round(random.uniform(0,int(data_qt[0])), int(data_qt[1])))
+
+
+def INTEGER():
+    return(randint(0,100))
+    
+
+def DATE():
+    data = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    return("'{}'".format(data))
+
+# _____________________________________________________#
+arquivo = str(input("Digite o caminho do arquivo: "))
+num_max = int(input())
+leitura_dados()
+
+´´´
+
+</details>
+	  
+	  
+
+
+
+
+

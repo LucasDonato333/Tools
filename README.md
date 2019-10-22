@@ -112,24 +112,47 @@ bl_id DECIMAL(20,4)
 ```
 
 Deverá conter o nome do campo, um espaço entre o nome do campo e o tipo do campo, e caso precise o tamanho do campo. Para finalizar uma virgula no final.
+Lembrando que o codigo só irá processar os dados com o tipo INTEGER, VARCHAR, DATE e DECIMAL. Caso precise que ele processe algum tipo de dado diferente dos citados, crie uma função onde será realizado uma criação de dado aleatório do jeito que você precisa, e coloque a chamada na função "grava_insert".
 
 Dessa forma o programa poderá ler e criar dados aleatórios, sendo preciso apenas indicar o caminho do arquivo de leitura e a quantidade de linhas que deseja formar os dados. Assim você poderá testar qualquer tabela com dados inseridos, sem precisar criar os famosos "teste01", "teste". 
 
 
 ```python
+# MODULOS
+from time import gmtime, strftime
 from random import uniform
-import random
 from random import randint
 from random import choice
 import string
-from time import gmtime, strftime
 
+# LISTAS
 lista_tipos = []
 lista_numero = []
 
-#REALIZA A LEITURA DO ARQUIVO
+# TIPOS DE DADOS
+def VARCHAR(data_qt):
+    lista_de_letras = string.ascii_lowercase
+    nome = []
+    letters = string.ascii_lowercase
+    nome =  (''.join(choice(letters) for i in range(0,int(data_qt))))
+    return("'{}'".format(nome[0].upper()+nome[1:]))
+
+def DECIMAL(data_qt):
+    return(round(random.uniform(0,int(data_qt[0])), int(data_qt[1])))
+
+def INTEGER():
+    return(randint(0,100))
+
+def DATE():
+    data = strftime("%Y-%m-%d", gmtime())
+    return("'{}'".format(data))
+
+# FUNCAO QUE REALIZA LEITURA DA TABELA
 def leitura_dados():
     with open(arquivo,"r") as file:
+        print(30*"~^")
+        print("\nLENDO ARQUIVO\n")
+        print(30*"~^")
         for f in file:
             f = f.split(" ")
             nm_coluna = f[0]
@@ -147,15 +170,17 @@ def leitura_dados():
             except:
                 pass
             lista_numero.append(data_qt)
-    grava_insert()        
+    grava_insert()
 
-#FAZ A GRAVAÇÃO DOS DADOS FAKES PARA UM ARQUIVO    
+# FUNCAO QUE REALIZA A GRAVACAO DOS DADOS ALEATORIOS
 def grava_insert():
     lista_de_dados = []
+    print(30*"~^")
+    print("\nGRAVANDO ARQUIVO\n")
+    print(30*"~^")
     for indice in range(0,num_max):    
-        with open("INSERT.parquet","a") as file_write:
+        with open(nome_table+".csv","a") as file_write:
             for c in range(len(lista_tipos)):
-                #print(f"Tipo: {lista_tipos[c]} QT: {lista_numero[c]}")
                 if lista_tipos[c] in "decimal":
                     dados = DECIMAL(lista_numero[c])
                 elif lista_tipos[c] in "varchar":
@@ -165,37 +190,23 @@ def grava_insert():
                 elif lista_tipos[c] in "date":
                     dados = DATE()
                 else:
-                    print("ELSE")
+                    print("TIPO NÃO ENCONTRADO")
                 file_write.write(str(dados))
                 if c+1 != len(lista_tipos):
                     file_write.write(",")
             file_write.write("\n")
+    print(30*"~^")
+    print("\nTHAT'S ALL FOLKS!!!\n")
+    print(30*"~^")
 
-#TIPOS DE DADOS
-def VARCHAR(data_qt):
-    lista_de_letras = string.ascii_lowercase
-    nome = []
-    letters = string.ascii_lowercase
-    nome =  (''.join(choice(letters) for i in range(0,int(data_qt))))
-    return("'{}'".format(nome[0].upper()+nome[1:]))
-
-
-def DECIMAL(data_qt):
-    return(round(random.uniform(0,int(data_qt[0])), int(data_qt[1])))
-
-
-def INTEGER():
-    return(randint(0,100))
-    
-
-def DATE():
-    data = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    return("'{}'".format(data))
-
-#_____________________________________________________#
+# INPUTS
 arquivo = str(input("Digite o caminho do arquivo: "))
-num_max = int(input())
+nome_table = str(input("Digite o Nome da Tabela: "))
+num_max = int(input("Quantidade de Linhas: "))
+
+# RUN
 leitura_dados()
+            
 ```
 
 </details>

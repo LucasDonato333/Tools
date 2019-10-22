@@ -111,8 +111,8 @@ nm VARCHAR(20),
 bl_id DECIMAL(20,4)
 ```
 
-Deverá conter o nome do campo, um espaço entre o nome do campo e o tipo do campo, e caso precise o tamanho do campo. Para finalizar uma virgula no final.
-Lembrando que o codigo só irá processar os dados com o tipo INTEGER, VARCHAR, DATE e DECIMAL. Caso precise que ele processe algum tipo de dado diferente dos citados, crie uma função onde será realizado uma criação de dado aleatório do jeito que você precisa, e coloque a chamada na função "grava_insert".
+Deverá conter o nome do campo, um espaço entre o nome do campo e o tipo do campo, e caso precise o tamanho do campo. Para finalizar uma virgula no final.<br>
+Lembrando que o codigo só irá processar os dados com o tipo INTEGER, VARCHAR, DATE e DECIMAL. Caso precise que ele processe algum tipo de dado diferente dos citados, crie uma função onde será realizado criação de dados aleatórios de sua preferencia, e coloque a chamada na função "grava_insert", adcionando a um dos "IFs".
 
 Dessa forma o programa poderá ler e criar dados aleatórios, sendo preciso apenas indicar o caminho do arquivo de leitura e a quantidade de linhas que deseja formar os dados. Assim você poderá testar qualquer tabela com dados inseridos, sem precisar criar os famosos "teste01", "teste". 
 

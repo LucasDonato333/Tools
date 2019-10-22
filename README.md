@@ -94,6 +94,7 @@ while fim < len(texto): # Enquanto o "fim" for menor que o tamanho total do text
 
 <details>
   <summary> CREATE FAKE</summary><br>
+
 ### Esse programa tem como objetivo realizar a criação de dados falsos, a partir dos dados de criação de uma tabela.
 
 Para utilizar o programa você deverá ter um arquivo contendo informações sobre a tabela.
